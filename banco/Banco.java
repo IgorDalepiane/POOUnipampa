@@ -1,7 +1,7 @@
 package banco;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 /**
  * A classe Banco Ã© responsÃ¡vel por gerenciar um nÃºmero indeterminado de
