@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 /**
+ * teste
  * A classe Banco Ã© responsÃ¡vel por gerenciar um nÃºmero indeterminado de
  * contas bancÃ¡rias. O banco permite abrir e encerrar uma conta bancÃ¡ria;
  * consultar o saldo, depositar e sacar de uma determinada conta, alÃ©m de
