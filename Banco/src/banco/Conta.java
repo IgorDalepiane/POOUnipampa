@@ -18,7 +18,7 @@ public class Conta {
     
     private final int numero;
     private String senha;
-    private String titular;
+    private Cliente titular;
     private double saldo;
     private double limite;
     
@@ -28,7 +28,7 @@ public class Conta {
      * de forma a garantir que toda conta possui um número único.
      * @param titular Nome completo do titular da conta.
      */
-    public Conta(String titular){
+    public Conta(Cliente titular){
         this.titular=titular;
         this.saldo=0;
         this.limite=0;
@@ -40,7 +40,7 @@ public class Conta {
      * Captura o titular da Conta.
      * @return Titular.
      */
-    public String getTitular(){
+    public Cliente getTitular(){
         return titular;
     }
     /**
@@ -90,7 +90,7 @@ public class Conta {
      * Modifica o titular da conta.
      * @param t Novo titular.
      */
-    public void setTitular(String t){
+    public void setTitular(Cliente t){
         titular=t;
     }
     
@@ -146,7 +146,7 @@ public class Conta {
      */
     @Override
     public String toString(){
-        return  "Numero: "+this.numero+" | Titular: "+this.titular+" | Saldo: "+this.saldo+" | Limite: "+this.limite+"\n";
+        return  "Numero: "+this.numero+" | Titular: "+this.titular.getNome()+" | Saldo: "+this.saldo+" | Limite: "+this.limite+"\n";
     }
     
 }

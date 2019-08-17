@@ -7,6 +7,7 @@ package banco;
 import static junit.framework.Assert.*;
 import org.junit.Test;
 import org.junit.*;
+
 /**
  *
  * @author igord
@@ -16,8 +17,8 @@ public class ContaTest {
     private Conta c;
     
     public ContaTest() {
-        c = new Conta("Igor");
-        c.deposita(500);
+        //c = new Conta("Igor");
+        //c.deposita(500);
     }
     //@Test
     public void testGetTitular() {
@@ -37,7 +38,7 @@ public class ContaTest {
     public void testGetLimite() {
     }
 
-   // @Test
+    @Test
     public void testGetSenha() {
     }
 

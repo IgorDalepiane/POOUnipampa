@@ -68,8 +68,14 @@ public class BancoES {
      * e informa ao usuário o resultado da operação.
      */
     public static void abrir() {
+        double CPF;
+        String nomeCliente;
         System.out.print("Informe o seu nome:");
-        Conta c = new Conta(ler.nextLine());
+        nomeCliente=ler.nextLine();
+        System.out.print("Informe o seu CPF:");
+        CPF=ler.nextDouble();
+        Cliente cl = new Cliente(nomeCliente,CPF);
+        Conta c = new Conta(cl);
         meuBanco.abrirConta(c);
     }
 
