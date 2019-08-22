@@ -165,4 +165,10 @@ public class Banco {
     public boolean encerrar(int numero, String senha) {
         return contas.remove(getConta(numero,senha));
     }
+    
+    public void atualiza(double taxa){
+        for(Conta c:contas){
+            c.atualiza(taxa);
+        }
+    }
 }

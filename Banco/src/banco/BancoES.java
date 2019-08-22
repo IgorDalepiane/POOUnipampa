@@ -29,7 +29,8 @@ public class BancoES {
             System.out.println("4. Depositar");
             System.out.println("5. Tranferir");
             System.out.println("6. Listar Todas Contas");
-            System.out.println("7. Encerrar Conta");
+            System.out.println("7. Inferir Taxa");
+            System.out.println("8. Encerrar Conta");
             System.out.println("0. Sair\n");
 
             System.out.print("Qual a opcao desejada:");
@@ -55,6 +56,9 @@ public class BancoES {
                     listar();
                     break;
                 case 7:
+                    atualizar();
+                    break;
+                case 8:
                     encerrar();
                     break;
                 default:
@@ -68,15 +72,35 @@ public class BancoES {
      * e informa ao usuário o resultado da operação.
      */
     public static void abrir() {
+
         double CPF;
         String nomeCliente;
+        int opConta;
+        Conta c = null;
         System.out.print("Informe o seu nome:");
-        nomeCliente=ler.nextLine();
+        nomeCliente = ler.nextLine();
         System.out.print("Informe o seu CPF:");
-        CPF=ler.nextDouble();
-        Cliente cl = new Cliente(nomeCliente,CPF);
-        Conta c = new Conta(cl);
+        CPF = ler.nextDouble();
+        System.out.println("Qual tipo de conta você deseja abrir?");
+        System.out.println("1 - Conta Corrente");
+        System.out.println("2 - Conta Poupança");
+        System.out.print("Sua opção: ");
+        Cliente cl = new Cliente(nomeCliente, CPF);
+        do {
+            opConta = ler.nextInt();
+            switch (opConta) {
+                case 1:
+                    c = new ContaCorrente(cl);
+                    break;
+                case 2:
+                    c = new ContaPoupanca(cl);
+                    break;
+                default:
+                    System.out.println("Opcao Inválida");
+            }
+        } while (opConta < 1 || opConta > 2);
         meuBanco.abrirConta(c);
+        System.out.print("Sua conta foi aberta com sucesso!");
     }
 
     /**
@@ -120,23 +144,24 @@ public class BancoES {
             System.out.println("Erro");
         }
     }
-        /**
-         * Realiza a leitura dos dados necessários para realizar o depósito em
-         * uma determinada conta e informa ao usuário o resultado da operação.
-         */
+
+    /**
+     * Realiza a leitura dos dados necessários para realizar o depósito em uma
+     * determinada conta e informa ao usuário o resultado da operação.
+     */
     public static void depositar() {
-        int numConta, valorSaque;
+        int numConta, valorDep;
         String senhaConta;
         System.out.println("Informe o numero da conta:");
         numConta = ler.nextInt();
         ler.nextLine();
         System.out.println("Informe a senha da conta:");
         senhaConta = ler.nextLine();
-        System.out.println("Informe valor a ser sacado:");
-        valorSaque = ler.nextInt();
+        System.out.println("Informe valor a ser depositado:");
+        valorDep = ler.nextInt();
 
-        if (meuBanco.depositar(numConta, senhaConta, valorSaque)) {
-            System.out.println("Foram depositados " + valorSaque + " na sua conta.");
+        if (meuBanco.depositar(numConta, senhaConta, valorDep)) {
+            System.out.println("Foram depositados " + valorDep + " na sua conta.");
         } else {
             System.out.println("Erro");
         }
@@ -154,14 +179,14 @@ public class BancoES {
         ler.nextLine();
         System.out.print("Informe a senha da sua conta: ");
         senhaConta = ler.nextLine();
-        
+
         System.out.print("Informe o numero da conta destinatária: ");
         numDestino = ler.nextInt();
-        
+
         System.out.println("Informe valor a ser transferido:");
         valorT = ler.nextInt();
-        
-        if (meuBanco.transferir(numConta, senhaConta,numDestino, valorT)) {
+
+        if (meuBanco.transferir(numConta, senhaConta, numDestino, valorT)) {
             System.out.println("Foram transferido " + valorT + " para a conta de destino.");
         } else {
             System.out.println("Erro");
@@ -179,6 +204,15 @@ public class BancoES {
      * Realiza a leitura dos dados necessários para realizar o encerramento de
      * uma determinada conta e informa ao usuário o resultado da operação.
      */
+    public static void atualizar(){
+        double taxa;
+        System.out.print("Qual a taxa a ser inferida: ");
+        taxa=ler.nextDouble();
+        meuBanco.atualiza(taxa);
+        System.out.print("Taxa inferida com sucesso!");
+    }
+    
+    
     public static void encerrar() {
         int numConta;
         String senhaConta;
@@ -187,13 +221,14 @@ public class BancoES {
         ler.nextLine();
         System.out.print("Informe a senha da conta: ");
         senhaConta = ler.nextLine();
-        
+
         if (meuBanco.encerrar(numConta, senhaConta)) {
             System.out.println("Sua conta foi encerrada");
         } else {
             System.out.println("Erro");
         }
     }
+
     /**
      * @param args the command line arguments
      */

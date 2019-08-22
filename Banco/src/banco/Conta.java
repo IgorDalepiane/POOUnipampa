@@ -13,14 +13,14 @@ package banco;
  * * limite corresponde ao valor que o titular pode sacar além de seu saldo.
  * @author Aline
  */
-public class Conta {
-    private static int nConta = 1;
+public abstract class Conta {
+    protected static int nConta = 1;
     
-    private final int numero;
-    private String senha;
-    private Cliente titular;
-    private double saldo;
-    private double limite;
+    protected final int numero;
+    protected String senha;
+    protected Cliente titular;
+    protected double saldo;
+    
     
     /**
      * Construtor da Conta que recebe o titular por parâmetro, 
@@ -31,11 +31,11 @@ public class Conta {
     public Conta(Cliente titular){
         this.titular=titular;
         this.saldo=0;
-        this.limite=0;
         this.numero=nConta++;
         this.senha="1234";
     }
        
+    public abstract void atualiza(double taxa);
     /**
      * Captura o titular da Conta.
      * @return Titular.
@@ -58,15 +58,6 @@ public class Conta {
     public double getSaldo(){
         return saldo;
     }
-    
-    /**
-     * Captura o limite da conta.
-     * @return Limite.
-     */
-    public double getLimite(){
-        return limite;
-    }
-    
     /**
      * Captura a senha da conta.
      * @return Senha.
@@ -110,14 +101,6 @@ public class Conta {
     }
     
     /**
-     * Modifica o limite da conta. 
-     * @param l Novo limite.
-     */
-    public void setLimite(double l){
-        limite=l;
-    }
-	
-    /**
      * Acrescenta o valor informado por parâmetro ao saldo da conta.
      * @param valor 
      */
@@ -132,21 +115,13 @@ public class Conta {
      * @return True se o saque foi realizado com sucesso e 
      * False caso contrário. 
      */
-    public boolean saca(double valor){
-        if(valor <= (saldo+limite)){
-            saldo-=valor;
-            return true;
-        }
-        return false;
-    }
+    public abstract boolean saca(double valor);
     
     /**
      * Retorna as informações da conta
      * @return Uma String com as informações.
      */
-    @Override
     public String toString(){
-        return  "Numero: "+this.numero+" | Titular: "+this.titular.getNome()+" | Saldo: "+this.saldo+" | Limite: "+this.limite+"\n";
-    }
-    
+        return  "Numero: "+this.numero+" | Titular: "+this.titular.getNome()+" | Saldo: "+this.saldo;
+    };
 }
