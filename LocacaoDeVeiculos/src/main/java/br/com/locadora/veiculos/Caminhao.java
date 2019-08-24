@@ -10,5 +10,14 @@ package br.com.locadora.veiculos;
  * @author 1801560700
  */
 public class Caminhao extends Veiculo{
+    private int numEixos;
+    private double cargaMax;
+
+    public Caminhao(int numEixos, double cargaMax, String placa, int ano, double valorDiaria) {
+        super(placa, ano, valorDiaria);
+        this.numEixos = numEixos;
+        this.cargaMax = cargaMax;
+    }
+    
     
 }
