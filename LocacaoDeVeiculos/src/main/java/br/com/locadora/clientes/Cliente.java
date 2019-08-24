@@ -51,10 +51,10 @@ public class Cliente implements IClientes {
 
     @Override
     public String getInfo() {
-        String all = null;
-        for (Cliente c : clientes) {
-            all += getInfo(c.CPF) + "\n";
-        }
+        String all = "";
+        if (clientes.get(0) != null)
+            for (Cliente c : clientes)
+                all += getInfo(c.CPF) + "\n";
         return all;
     }
 
