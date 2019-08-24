@@ -5,30 +5,57 @@
  */
 package br.com.locadora.clientes;
 
+import java.util.ArrayList;
+
 /**
- *
  * @author 1801560700
  */
-public class Cliente implements IClientes{
+public class Cliente implements IClientes {
+    protected String nome;
+    protected long CPF;
+    protected long CNH;
+    protected long telefone;
+    protected String endereco;
+
+    private ArrayList<Cliente> clientes = new ArrayList<>();
+
+    public Cliente(String nome, long CPF, long CNH, long telefone, String endereco) {
+        this.nome = nome;
+        this.CPF = CPF;
+        this.CNH = CNH;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 
     @Override
     public void add(Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        clientes.add(c);
     }
 
     @Override
     public Cliente get(long CPF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Cliente c : clientes) {
+            if (c.CPF == CPF)
+                return this;
+        }
+        return null;
     }
 
     @Override
     public String getInfo(long CPF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Cliente c = get(CPF);
+        if (c != null)
+            return "Nome: " + c.nome + " | CPF: " + c.CPF + " | Endereço: " + c.endereco + " | Telefone: " + c.telefone + " | CNH: " + c.CNH;
+        return null;
     }
 
     @Override
     public String getInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String all = null;
+        for (Cliente c : clientes) {
+            all += getInfo(c.CPF) + "\n";
+        }
+        return all;
     }
 
     @Override
@@ -50,5 +77,5 @@ public class Cliente implements IClientes{
     public boolean existe(long CPF) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
