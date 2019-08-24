@@ -10,7 +10,7 @@ package br.com.locadora.veiculos;
  * @author 1801560700
  */
 public class Veiculo implements IVeiculos{
-
+    public int oi;
     @Override
     public void add(Veiculo v) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
