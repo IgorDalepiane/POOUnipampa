@@ -25,6 +25,8 @@ public class Cliente implements IClientes {
         this.CNH = CNH;
         this.telefone = telefone;
         this.endereco = endereco;
+        //adiciona o cliente novo à lista
+        add(this);
     }
 
     @Override
@@ -45,7 +47,11 @@ public class Cliente implements IClientes {
     public String getInfo(long CPF) {
         Cliente c = get(CPF);
         if (c != null)
-            return "Nome: " + c.nome + " | CPF: " + c.CPF + " | Endereço: " + c.endereco + " | Telefone: " + c.telefone + " | CNH: " + c.CNH;
+            return "Nome: " + c.nome
+                    + " | CPF: " + c.CPF
+                    + " | Endereço: " + c.endereco
+                    + " | Telefone: " + c.telefone
+                    + " | CNH: " + c.CNH;
         return null;
     }
 
@@ -54,7 +60,7 @@ public class Cliente implements IClientes {
         String all = "";
         if (clientes.get(0) != null)
             for (Cliente c : clientes)
-                all += getInfo(c.CPF) + "\n";
+                all += getInfo(c.CPF);
         return all;
     }
 
