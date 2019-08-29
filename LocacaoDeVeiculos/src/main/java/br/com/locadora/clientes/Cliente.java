@@ -11,13 +11,13 @@ import java.util.ArrayList;
  * @author 1801560700
  */
 public class Cliente implements IClientes {
-    protected String nome;
-    protected long CPF;
-    protected long CNH;
-    protected long telefone;
-    protected String endereco;
+    private String nome;
+    long CPF;
+    private long CNH;
+    private long telefone;
+    private String endereco;
 
-    private ArrayList<Cliente> clientes = new ArrayList<>();
+    static ArrayList<Cliente> clientes = new ArrayList<>();
 
     public Cliente(String nome, long CPF, long CNH, long telefone, String endereco) {
         this.nome = nome;
@@ -25,8 +25,14 @@ public class Cliente implements IClientes {
         this.CNH = CNH;
         this.telefone = telefone;
         this.endereco = endereco;
-        //adiciona o cliente novo à lista
-        add(this);
+    }
+
+    public Cliente(Cliente c) {
+        this.nome = c.nome;
+        this.CPF = c.CPF;
+        this.CNH = c.CNH;
+        this.telefone = c.telefone;
+        this.endereco = c.endereco;
     }
 
     @Override
@@ -49,39 +55,53 @@ public class Cliente implements IClientes {
         if (c != null)
             return "Nome: " + c.nome
                     + " | CPF: " + c.CPF
-                    + " | Endereço: " + c.endereco
+                    + " | CNH: " + c.CNH
                     + " | Telefone: " + c.telefone
-                    + " | CNH: " + c.CNH;
+                    + " | Endereço: " + c.endereco;
+
         return null;
     }
 
     @Override
     public String getInfo() {
-        String all = "";
-        if (clientes.get(0) != null)
+        StringBuilder all = new StringBuilder();
+        if (clientes.get(0) != null) {
             for (Cliente c : clientes)
-                all += getInfo(c.CPF);
-        return all;
+                all.append(getInfo(c.CPF)).append("\n");
+            return all.toString();
+        } else return null;
     }
 
     @Override
     public String getResumoInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StringBuilder all = new StringBuilder();
+        if (clientes.get(0) != null) {
+            for (Cliente c : clientes)
+                all.append("Nome: ").append(c.nome).append(" | CPF: ").append(c.CPF).append("\n");
+            return all.toString();
+        } else return null;
     }
 
     @Override
     public boolean set(long CPF, Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            int objIndex = clientes.indexOf(get(CPF));
+            Cliente old = new Cliente(c);
+            clientes.set(objIndex, old);
+        } catch (NullPointerException npe) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean remove(long CPF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return clientes.remove(get(CPF));
     }
 
     @Override
     public boolean existe(long CPF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return get(CPF) != null;
     }
 
 }
