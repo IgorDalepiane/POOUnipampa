@@ -9,7 +9,7 @@ package br.com.locadora.veiculos;
  *
  * @author 1801560700
  */
-public class Veiculo {
+public abstract class Veiculo {
     private String placa;
     private int ano;
     private double valorDiaria;
@@ -43,6 +43,10 @@ public class Veiculo {
     public void setValorDiaria(double valorDiaria) {
         this.valorDiaria = valorDiaria;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "placa = " + placa + "\n\tAno = " + ano + ", Valor Diaria = " + valorDiaria;
+    }
+
 }

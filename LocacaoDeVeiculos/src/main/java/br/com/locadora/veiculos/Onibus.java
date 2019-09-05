@@ -9,7 +9,7 @@ package br.com.locadora.veiculos;
  *
  * @author 1801560700
  */
-public class Onibus extends Veiculos{
+public class Onibus extends Veiculo{
     private int numPassageiros;
     private String categoria;
     private boolean wiFi;
@@ -22,24 +22,56 @@ public class Onibus extends Veiculos{
         this.wiFi = wiFi;
         this.arCondicionado = arCondicionado;
     }
-    
-    @Override
-    public String getInfo(String placa) {
-        String ar;
-        if(this.arCondicionado==true){
-            ar="Possui";
-        }else{
-            ar="Não possui";
-        }
-        
-        String wifi;
-        if(this.wiFi==true){
-            wifi="Possui";
-        }else{
-            wifi="Não possui";
-        }
-        return super.getInfo(placa)+"Numero de Passageiros: "+this.numPassageiros+" | Categoria: "+this.categoria+" | Wi-Fi: "+wifi+" | Ar-Condicionado: "+ar; 
+
+    public int getNumPassageiros() {
+        return numPassageiros;
     }
+
+    public void setNumPassageiros(int numPassageiros) {
+        this.numPassageiros = numPassageiros;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public boolean isWiFi() {
+        return wiFi;
+    }
+
+    public void setWiFi(boolean wiFi) {
+        this.wiFi = wiFi;
+    }
+
+    public boolean isArCondicionado() {
+        return arCondicionado;
+    }
+
+    public void setArCondicionado(boolean arCondicionado) {
+        this.arCondicionado = arCondicionado;
+    }
+
+    @Override
+    public String toString() {
+        String ar,wi;
+        if(isArCondicionado()){
+            ar="possui";
+        }else{
+            ar="não possui"; 
+        }
+        if(isWiFi()){
+            wi="possui";
+        }else{
+            wi="não possui"; 
+        }
+        return "Onibus com " +super.toString()+", Numero de Passageiros = " + numPassageiros + ", Categoria = " + categoria + ", Wi-Fi = " + wi + ", Ar-Condicionado = " + ar;
+    }
+    
+   
    
     
 }

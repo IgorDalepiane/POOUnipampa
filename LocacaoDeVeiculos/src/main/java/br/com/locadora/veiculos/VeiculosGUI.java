@@ -19,8 +19,10 @@ public class VeiculosGUI {
     private String placa;
     private int ano;
     private double valorDiaria;
+    private Veiculos veiculos;
 
     public VeiculosGUI() {
+        this.veiculos = new Veiculos();
         do {
             menu();
         } while (true);
@@ -108,8 +110,8 @@ public class VeiculosGUI {
             opAr = ler.nextInt();
         } while (opAr < 1 || opAr > 2);
         arCondicionado = opAr == 1;
-        Veiculos carro = new Carro(numPassageiros, numPortas, mediaDeKml, arCondicionado, placa, ano, valorDiaria);
-        carro.add(carro);
+        Carro carro = new Carro(numPassageiros, numPortas, mediaDeKml, arCondicionado, placa, ano, valorDiaria);
+        veiculos.add(carro);
     }
 
     private void cadastrarOnibus() {
@@ -147,8 +149,8 @@ public class VeiculosGUI {
             opAr = ler.nextInt();
         } while (opAr < 1 || opAr > 2);
         arCondicionado = opAr == 1;
-        Veiculos onibus = new Onibus(numPassageiros, categoria, wifi, arCondicionado, placa, ano, valorDiaria);
-        onibus.add(onibus);
+        Veiculo onibus = new Onibus(numPassageiros, categoria, wifi, arCondicionado, placa, ano, valorDiaria);
+        veiculos.add(onibus);
     }
 
     private void cadastrarCaminhao() {
@@ -167,7 +169,7 @@ public class VeiculosGUI {
         System.out.print("Carga maxima: ");
         cargaMax = ler.nextDouble();
         Veiculo caminhao = new Caminhao(numEixos, cargaMax, placa, ano, valorDiaria);
-        caminhao.add(caminhao);
+        veiculos.add(caminhao);
     }
 
     private void listarMenu() {
@@ -197,46 +199,22 @@ public class VeiculosGUI {
     private void listarUmVeiculo() {
         System.out.println("\nDigite a placa do veículo: ");
         placa = ler.nextLine();
-        if(!Veiculo.veiculos.isEmpty()){
-            System.out.println(Veiculo.veiculos.get(0).getInfo(placa));
-        }else{
-            System.out.println("Não existem veículos cadastrados!");
-        }
+        System.out.println(veiculos.getInfo(placa));
     }
 
     private void listarTodos() {
-        if(!Veiculo.veiculos.isEmpty()){
-            System.out.println(Veiculo.veiculos.get(0).getInfo());
-        }else{
-            System.out.println("Não existem veículos cadastrados!");
-        }
+        System.out.println(veiculos.getInfo());
     }
 
     private void editarMenu() {
-        Veiculo v = new Veiculo();
-        if(!Veiculo.veiculos.isEmpty()){
-            int opVeiculo;
-            System.out.println("Escolha uma opção entre: 0 - "+(Veiculo.veiculos.size()-1));
-            listarTodos();
-            do{
-                System.out.print("Qual veiculo você deseja modificar: ");
-                opVeiculo=ler.nextInt();
-            }while(opVeiculo<0 || opVeiculo>(Veiculo.veiculos.size()-1));
-            Veiculo teste = Veiculo.veiculos.get(opVeiculo);  
-            }
-            switch(teste.getName()){
-                case "Carro":
-                    System.out.println("éumcarro");
-                    break;
-                case "Onibus":
-                    System.out.println("éumonibus");
-                    break;
-                case "Caminhao":
-                       System.out.println("éumcaminhao");
-                    break;
-            }
-            
-        }
+        int indice;
+        listarTodos();
+        System.out.println("Escolha um dentre os "+veiculos.getNumVeiculos()+" veiculos para edita-lo.");
+        do{
+            System.out.print("Qual o indice escolhido: ");
+            indice=ler.nextInt();
+        }while(indice<1 || indice>veiculos.getNumVeiculos());
+        Veiculo v
+        
     }
-
 }
