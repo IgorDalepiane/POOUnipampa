@@ -27,14 +27,6 @@ public class Cliente implements IClientes {
         this.endereco = endereco;
     }
 
-    public Cliente(Cliente c) {
-        this.nome = c.nome;
-        this.CPF = c.CPF;
-        this.CNH = c.CNH;
-        this.telefone = c.telefone;
-        this.endereco = c.endereco;
-    }
-
     @Override
     public void add(Cliente c) {
         clientes.add(c);
@@ -83,11 +75,18 @@ public class Cliente implements IClientes {
     }
 
     @Override
-    public boolean set(long CPF, Cliente c) {
+    public boolean set(long CPF, Cliente novo) {
         try {
             int objIndex = clientes.indexOf(get(CPF));
-            Cliente old = new Cliente(c);
-            clientes.set(objIndex, old);
+            Cliente velho = clientes.get(objIndex);
+
+            velho.nome = novo.nome;
+            velho.CPF = novo.CPF;
+            velho.CNH = novo.CNH;
+            velho.telefone = novo.telefone;
+            velho.endereco = novo.endereco;
+
+            clientes.set(objIndex, velho);
         } catch (NullPointerException npe) {
             return false;
         }
