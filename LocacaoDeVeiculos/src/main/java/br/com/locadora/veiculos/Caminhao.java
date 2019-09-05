@@ -9,7 +9,7 @@ package br.com.locadora.veiculos;
  *
  * @author 1801560700
  */
-public class Caminhao extends Veiculo{
+public class Caminhao extends Veiculos{
     private int numEixos;
     private double cargaMax;
 
@@ -19,5 +19,8 @@ public class Caminhao extends Veiculo{
         this.cargaMax = cargaMax;
     }
     
-    
+    @Override
+    public String getInfo(String placa) {
+        return super.getInfo(placa)+"Numero de Eixos: "+this.numEixos+" | Carga Máxima: "+this.cargaMax; 
+    }
 }

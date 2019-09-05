@@ -9,7 +9,7 @@ package br.com.locadora.veiculos;
  *
  * @author 1801560700
  */
-public class Carro extends Veiculo{
+public class Carro extends Veiculos{
     private int numPassageiros;
     private int numPortas;
     private double mediaDeKmL;
