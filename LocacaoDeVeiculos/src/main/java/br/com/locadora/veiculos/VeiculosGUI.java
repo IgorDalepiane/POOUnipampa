@@ -81,95 +81,133 @@ public class VeiculosGUI {
         }
     }
 
+    private Veiculo formCarro() {
+        try {
+            int numPassageiros;
+            int numPortas;
+            double mediaDeKml;
+            boolean arCondicionado;
+            int opAr;
+            System.out.print("Placa: ");
+            placa = ler.nextLine();
+            System.out.print("Ano: ");
+            ano = ler.nextInt();
+            ler.nextLine();
+            System.out.print("Valor da diaria: ");
+            valorDiaria = ler.nextDouble();
+            System.out.print("Numero de passageiros: ");
+            numPassageiros = ler.nextInt();
+            ler.nextLine();
+            System.out.print("Numero de portas: ");
+            numPortas = ler.nextInt();
+            ler.nextLine();
+            System.out.print("Media de Km/l: ");
+            mediaDeKml = ler.nextDouble();
+            System.out.println("O carro possui ar-condicionado?");
+            System.out.println("1 - Sim");
+            System.out.println("2 - Não");
+            System.out.print("Sua escolha: ");
+            do {
+                opAr = ler.nextInt();
+            } while (opAr < 1 || opAr > 2);
+            arCondicionado = opAr == 1;
+            Veiculo carro = new Carro(numPassageiros, numPortas, mediaDeKml, arCondicionado, placa, ano, valorDiaria);
+            return carro;
+        } catch (NumberFormatException nfe) {
+            System.out.println("Algum campo foi preenchido incorretamente.");
+            return null;
+        }
+
+    }
+
     private void cadastrarCarro() {
-        int numPassageiros;
-        int numPortas;
-        double mediaDeKml;
-        boolean arCondicionado;
-        int opAr;
-        System.out.print("Placa: ");
-        placa = ler.nextLine();
-        System.out.print("Ano: ");
-        ano = ler.nextInt();
-        ler.nextLine();
-        System.out.print("Valor da diaria: ");
-        valorDiaria = ler.nextDouble();
-        System.out.print("Numero de passageiros: ");
-        numPassageiros = ler.nextInt();
-        ler.nextLine();
-        System.out.print("Numero de portas: ");
-        numPortas = ler.nextInt();
-        ler.nextLine();
-        System.out.print("Media de Km/l: ");
-        mediaDeKml = ler.nextDouble();
-        System.out.println("O carro possui ar-condicionado?");
-        System.out.println("1 - Sim");
-        System.out.println("2 - Não");
-        System.out.print("Sua escolha: ");
-        do {
-            opAr = ler.nextInt();
-        } while (opAr < 1 || opAr > 2);
-        arCondicionado = opAr == 1;
-        Carro carro = new Carro(numPassageiros, numPortas, mediaDeKml, arCondicionado, placa, ano, valorDiaria);
-        veiculos.add(carro);
+        Veiculo carro = formCarro();
+        if (carro != null) {
+            veiculos.add(carro);
+        }
+    }
+
+    private Veiculo formOnibus() {
+        try {
+            int numPassageiros;
+            String categoria;
+            boolean wifi;
+            boolean arCondicionado;
+            int opAr, opWifi;
+            System.out.print("Placa: ");
+            placa = ler.nextLine();
+            System.out.print("Ano: ");
+            ano = ler.nextInt();
+            ler.nextLine();
+            System.out.print("Valor da diaria: ");
+            valorDiaria = ler.nextDouble();
+            ler.nextLine();
+            System.out.print("Categoria: ");
+            categoria = ler.nextLine();
+            System.out.print("Numero de passageiros: ");
+            numPassageiros = ler.nextInt();
+            ler.nextLine();
+            System.out.println("O onibus possui wi-fi?");
+            System.out.println("1 - Sim");
+            System.out.println("2 - Não");
+            System.out.print("Sua escolha: ");
+            do {
+                opWifi = ler.nextInt();
+            } while (opWifi < 1 || opWifi > 2);
+            wifi = opWifi == 1;
+            System.out.println("O onibus possui ar-condicionado?");
+            System.out.println("1 - Sim");
+            System.out.println("2 - Não");
+            System.out.print("Sua escolha: ");
+            do {
+                opAr = ler.nextInt();
+            } while (opAr < 1 || opAr > 2);
+            arCondicionado = opAr == 1;
+            Veiculo onibus = new Onibus(numPassageiros, categoria, wifi, arCondicionado, placa, ano, valorDiaria);
+            return onibus;
+        } catch (NumberFormatException nfe) {
+            System.out.println("Algum campo foi preenchido incorretamente.");
+            return null;
+        }
+
     }
 
     private void cadastrarOnibus() {
-        int numPassageiros;
-        String categoria;
-        boolean wifi;
-        boolean arCondicionado;
-        int opAr, opWifi;
-        System.out.print("Placa: ");
-        placa = ler.nextLine();
-        System.out.print("Ano: ");
-        ano = ler.nextInt();
-        ler.nextLine();
-        System.out.print("Valor da diaria: ");
-        valorDiaria = ler.nextDouble();
-        ler.nextLine();
-        System.out.print("Categoria: ");
-        categoria = ler.nextLine();
-        System.out.print("Numero de passageiros: ");
-        numPassageiros = ler.nextInt();
-        ler.nextLine();
-        System.out.println("O carro possui wi-fi?");
-        System.out.println("1 - Sim");
-        System.out.println("2 - Não");
-        System.out.print("Sua escolha: ");
-        do {
-            opWifi = ler.nextInt();
-        } while (opWifi < 1 || opWifi > 2);
-        wifi = opWifi == 1;
-        System.out.println("O carro possui ar-condicionado?");
-        System.out.println("1 - Sim");
-        System.out.println("2 - Não");
-        System.out.print("Sua escolha: ");
-        do {
-            opAr = ler.nextInt();
-        } while (opAr < 1 || opAr > 2);
-        arCondicionado = opAr == 1;
-        Veiculo onibus = new Onibus(numPassageiros, categoria, wifi, arCondicionado, placa, ano, valorDiaria);
-        veiculos.add(onibus);
+        Veiculo onibus = formOnibus();
+        if (onibus != null) {
+            veiculos.add(onibus);
+        }
+    }
+
+    private Veiculo formCaminhao() {
+        try {
+            int numEixos;
+            double cargaMax;
+            System.out.print("Placa: ");
+            placa = ler.nextLine();
+            System.out.print("Ano: ");
+            ano = ler.nextInt();
+            ler.nextLine();
+            System.out.print("Valor da diaria: ");
+            valorDiaria = ler.nextDouble();
+            System.out.print("Numero de eixos: ");
+            numEixos = ler.nextInt();
+            ler.nextLine();
+            System.out.print("Carga maxima: ");
+            cargaMax = ler.nextDouble();
+            Veiculo caminhao = new Caminhao(numEixos, cargaMax, placa, ano, valorDiaria);
+            return caminhao;
+        } catch (NumberFormatException nfe) {
+            System.out.println("Algum campo foi preenchido incorretamente.");
+            return null;
+        }
     }
 
     private void cadastrarCaminhao() {
-        int numEixos;
-        double cargaMax;
-        System.out.print("Placa: ");
-        placa = ler.nextLine();
-        System.out.print("Ano: ");
-        ano = ler.nextInt();
-        ler.nextLine();
-        System.out.print("Valor da diaria: ");
-        valorDiaria = ler.nextDouble();
-        System.out.print("Numero de eixos: ");
-        numEixos = ler.nextInt();
-        ler.nextLine();
-        System.out.print("Carga maxima: ");
-        cargaMax = ler.nextDouble();
-        Veiculo caminhao = new Caminhao(numEixos, cargaMax, placa, ano, valorDiaria);
-        veiculos.add(caminhao);
+        Veiculo caminhao = formCaminhao();
+        if (caminhao != null) {
+            veiculos.add(caminhao);
+        }
     }
 
     private void listarMenu() {
@@ -191,7 +229,6 @@ public class VeiculosGUI {
                 break;
             case 2:
                 listarTodos();
-                cadastrarOnibus();
                 break;
         }
     }
@@ -209,12 +246,30 @@ public class VeiculosGUI {
     private void editarMenu() {
         int indice;
         listarTodos();
-        System.out.println("Escolha um dentre os "+veiculos.getNumVeiculos()+" veiculos para edita-lo.");
-        do{
+        System.out.println("Escolha um dentre os " + veiculos.list.size() + " veiculos para edita-lo.");
+        do {
             System.out.print("Qual o indice escolhido: ");
-            indice=ler.nextInt();
-        }while(indice<1 || indice>veiculos.getNumVeiculos());
-        Veiculo v
-        
+
+            indice = ler.nextInt() - 1; //indice
+            ler.nextLine();
+        } while (indice < 0 || indice >= veiculos.list.size());
+        Veiculo v = veiculos.list.get(indice);
+        if (v instanceof Carro) {
+            Veiculo carro = formCarro();
+            if (carro != null) {
+                veiculos.set(v.getPlaca(), carro);
+            }
+        } else if (v instanceof Onibus) {
+            Veiculo onibus = formOnibus();
+            if (onibus != null) {
+                veiculos.set(v.getPlaca(), onibus);
+            }
+        } else if (v instanceof Caminhao) {
+            Veiculo caminhao = formCaminhao();
+            if (caminhao != null) {
+                veiculos.set(v.getPlaca(), caminhao);
+            }
+        }
+
     }
 }
