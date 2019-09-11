@@ -8,7 +8,6 @@ package br.com.locadora.veiculos;
 import java.util.Scanner;
 
 /**
- *
  * @author 1801560700
  */
 public class VeiculosGUI {
@@ -132,7 +131,7 @@ public class VeiculosGUI {
         System.out.print("Numero de passageiros: ");
         numPassageiros = ler.nextInt();
         ler.nextLine();
-        System.out.println("O carro possui wi-fi?");
+        System.out.println("Possui wi-fi?");
         System.out.println("1 - Sim");
         System.out.println("2 - Não");
         System.out.print("Sua escolha: ");
@@ -140,7 +139,7 @@ public class VeiculosGUI {
             opWifi = ler.nextInt();
         } while (opWifi < 1 || opWifi > 2);
         wifi = opWifi == 1;
-        System.out.println("O carro possui ar-condicionado?");
+        System.out.println("Possui ar-condicionado?");
         System.out.println("1 - Sim");
         System.out.println("2 - Não");
         System.out.print("Sua escolha: ");
@@ -208,12 +207,12 @@ public class VeiculosGUI {
     private void editarMenu() {
         int indice;
         listarTodos();
-        System.out.println("Escolha um dentre os "+veiculos.getNumVeiculos()+" veiculos para edita-lo.");
-        do{
+        System.out.println("Escolha um dentre os " + veiculos.getNumVeiculos() + " veiculos para edita-lo.");
+        do {
             System.out.print("Qual o indice escolhido: ");
-            indice=ler.nextInt();
-        }while(indice<1 || indice>veiculos.getNumVeiculos());
+            indice = ler.nextInt();
+        } while (indice < 1 || indice > veiculos.getNumVeiculos());
         //Veiculo v
-        
+
     }
 }

@@ -18,7 +18,7 @@ public class Locacoes implements ILocacoes {
     @Override
     public Locacao get(int codigo) {
         return list.stream()
-                .filter(loc -> loc.cod == codigo)
+                .filter(loc -> loc.getCod() == codigo)
                 .findAny()
                 .orElse(null);
     }
@@ -27,13 +27,7 @@ public class Locacoes implements ILocacoes {
     public String getInfo(int codigo) {
         Locacao loc = get(codigo);
         if (loc != null)
-            return "Código: " + loc.cod +
-                    " | Cliente: " + loc.c.toString() +
-                    " | Veículo: " + loc.v.toString() +
-                    " | Seguro: " + (loc.seguro ? "Sim" : "Não") +
-                    " | Diária: " + loc.diaria +
-                    " | Data de início: " + loc.dataInicio.toString() +
-                    " | Data de término: " + loc.dataFim.toString();
+            return loc.toString();
         return null;
     }
 
@@ -42,7 +36,7 @@ public class Locacoes implements ILocacoes {
         String str = "";
         if (!list.isEmpty()) {
             for (Locacao loc : list)
-                str = str.concat(getInfo(loc.cod)).concat("\n");
+                str = str.concat(getInfo(loc.getCod())).concat("\n");
             return str;
         }
         return null;

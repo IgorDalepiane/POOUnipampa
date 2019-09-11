@@ -6,10 +6,9 @@
 package br.com.locadora.veiculos;
 
 /**
- *
  * @author 1801560700
  */
-public class Carro extends Veiculo{
+public class Carro extends Veiculo {
     private int numPassageiros;
     private int numPortas;
     private double mediaDeKmL;
@@ -57,14 +56,12 @@ public class Carro extends Veiculo{
 
     @Override
     public String toString() {
-        String ar;
-        if(isArCondicionado()){
-            ar="possui";
-        }else{
-            ar="não possui"; 
-        }
-        return "Carro com "+super.toString()+", Numero de Passageiros = " + numPassageiros + ", Numero de Portas = " + numPortas + ", Media de KM/L = " + mediaDeKmL + ", Ar-Condicionado = " + ar;
+        return "Carro com " + super.toString() +
+                ", Numero de Passageiros = " + numPassageiros +
+                ", Numero de Portas = " + numPortas +
+                ", Media de KM/L = " + mediaDeKmL +
+                ", Ar-Condicionado = " + (isArCondicionado() ? "Sim" : "Não");
     }
-    
-    
+
+
 }

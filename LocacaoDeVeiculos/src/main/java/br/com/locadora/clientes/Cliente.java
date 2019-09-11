@@ -21,10 +21,15 @@ public class Cliente {
     }
 
     public String toString() {
-        return this.nome + " | " +
-                this.CPF + " | " +
-                this.CNH + " | " +
-                this.telefone + " | " +
-                this.endereco;
+        return "Nome: " + this.nome +
+                " | CPF: " + this.CPF +
+                " | CNH: " + this.CNH +
+                " | Telefone: " + this.telefone +
+                " | Endereço: " + this.endereco;
+    }
+
+    public String resumo() {
+        return "Nome: " + this.nome +
+                " | CPF: " + this.CPF;
     }
 }

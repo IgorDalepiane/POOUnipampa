@@ -6,6 +6,7 @@
 package br.com.locadora;
 
 import br.com.locadora.clientes.Cliente;
+import br.com.locadora.clientes.ClienteGUI;
 import br.com.locadora.clientes.Clientes;
 import br.com.locadora.locacoes.Locacao;
 import br.com.locadora.locacoes.Locacoes;
@@ -35,5 +36,7 @@ public class LocadoraMain {
 
         lcs.add(loc1);
         System.out.println(lcs.getInfo(loc1.getCod()));
+
+        new ClienteGUI(cs);
     }
 }

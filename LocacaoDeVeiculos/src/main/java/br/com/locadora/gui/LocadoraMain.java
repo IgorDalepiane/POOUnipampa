@@ -12,11 +12,11 @@ public class LocadoraMain extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Locar veículos");
+    public void start(Stage window) {
+        window.setTitle("Locar veículos");
         StackPane layout = new StackPane();
         Scene scene = new Scene(layout, 300, 250);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        window.setScene(scene);
+        window.show();
     }
 }

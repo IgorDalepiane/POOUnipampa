@@ -18,7 +18,7 @@ public class Clientes implements IClientes{
     @Override
     public Cliente get(long CPF) {
         return list.stream()
-                .filter(clienteNaLista -> clienteNaLista.CPF == CPF)
+                .filter(c -> c.CPF == CPF)
                 .findFirst()
                 .orElse(null);
     }
@@ -27,11 +27,7 @@ public class Clientes implements IClientes{
     public String getInfo(long CPF) {
         Cliente c = get(CPF);
         if (c != null)
-            return "Nome: " + c.nome +
-                    " | CPF: " + c.CPF +
-                    " | Telefone: " + c.telefone +
-                    " | CNH: " + c.CNH +
-                    " | Endereço: " + c.endereco;
+            return c.toString();
         return null;
     }
 
@@ -40,7 +36,7 @@ public class Clientes implements IClientes{
         String str = "";
         if (!list.isEmpty()) {
             for (Cliente c : list)
-                str = str.concat(getInfo(c.CPF)).concat("\n");
+                str = str.concat(c.toString()).concat("\n");
             return str;
         }
         return null;
@@ -48,11 +44,11 @@ public class Clientes implements IClientes{
 
     @Override
     public String getResumoInfo() {
-        StringBuilder all = new StringBuilder();
-        if (list.get(0) != null) {
+        String str = "";
+        if (!list.isEmpty()) {
             for (Cliente c : list)
-                all.append("Nome: ").append(c.nome).append(" | CPF: ").append(c.CPF).append("\n");
-            return all.toString();
+                str += str.concat(c.resumo()).concat("\n");
+            return str;
         } else return null;
     }
 

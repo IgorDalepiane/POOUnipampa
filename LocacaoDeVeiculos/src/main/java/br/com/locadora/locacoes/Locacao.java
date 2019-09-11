@@ -11,23 +11,22 @@ import br.com.locadora.veiculos.Veiculo;
 import java.util.Date;
 
 /**
- *
  * @author 1801560700
  */
 public class Locacao {
-    int cod = 1;
-    Cliente c;
-    Veiculo v;
-    boolean seguro;
-    double diaria;
-    Date dataInicio;
-    Date dataFim;
+    private int cod = 1;
+    private Cliente c;
+    private Veiculo v;
+    private boolean seguro;
+    private double diaria;
+    private Date dataInicio;
+    private Date dataFim;
 
     public int getCod() {
         return cod;
     }
 
-    public Locacao (Cliente c, Veiculo v, boolean seguro, Date dataInicio, Date dataFim) {
+    public Locacao(Cliente c, Veiculo v, boolean seguro, Date dataInicio, Date dataFim) {
         this.cod = cod++;
         this.c = c;
         this.v = v;
@@ -35,5 +34,15 @@ public class Locacao {
         this.diaria = v.getValorDiaria();
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
+    }
+
+    public String toString() {
+        return "Código: " + this.cod +
+                " | Cliente: " + this.c.toString() +
+                " | Veículo: " + this.v.toString() +
+                " | Seguro: " + (this.seguro ? "Sim" : "Não") +
+                " | Diária: " + this.diaria +
+                " | Data de início: " + this.dataInicio.toString() +
+                " | Data de término: " + this.dataFim.toString();
     }
 }
