@@ -8,6 +8,7 @@ package br.com.locadora.veiculos;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,26 +16,16 @@ import java.util.logging.Logger;
  * @author 1801560700
  */
 public class Veiculos implements IVeiculos {
-    private static int numDeVeiculos = 0;
-    static ArrayList<Veiculo> veiculos = new ArrayList<>();
-
-    public Veiculos() {
-
-    }
+    List<Veiculo> list = new ArrayList<>();
 
     @Override
     public void add(Veiculo v) {
-        veiculos.add(v);
-        numDeVeiculos++;
-    }
-
-    public int getNumVeiculos() {
-        return numDeVeiculos;
+        list.add(v);
     }
 
     @Override
     public Veiculo get(String placa) {
-        for (Veiculo v : veiculos) {
+        for (Veiculo v : list) {
             if (v.getPlaca().equals(placa)) {
                 return v;
             }
@@ -55,8 +46,8 @@ public class Veiculos implements IVeiculos {
     public String getInfo() {
         String str = "";
         int cont = 1;
-        if (!veiculos.isEmpty()) {
-            for (Veiculo v : veiculos) {
+        if (!list.isEmpty()) {
+            for (Veiculo v : list) {
                 str = str.concat(cont + ") " + getInfo(v.getPlaca()) + "\n");
                 cont++;
             }
@@ -68,8 +59,8 @@ public class Veiculos implements IVeiculos {
     @Override
     public String getResumoInfo() {
         String str = null;
-        if (!veiculos.isEmpty()) {
-            for (Veiculo v : veiculos) {
+        if (!list.isEmpty()) {
+            for (Veiculo v : list) {
                 str = str.concat("Placa: " + v.getPlaca() + " | Ano: " + v.getAno() + " | Valor da Diaria: " + v.getValorDiaria() + "\n");
             }
             return str;
@@ -81,8 +72,8 @@ public class Veiculos implements IVeiculos {
     public boolean set(String placa, Veiculo novo) {
         Veiculo velho = get(placa);
         if (velho != null) {
-            int objIndex = veiculos.indexOf(velho);
-            veiculos.set(objIndex, novo);
+            int objIndex = list.indexOf(velho);
+            list.set(objIndex, novo);
             return true;
         }
         return false;
@@ -92,8 +83,7 @@ public class Veiculos implements IVeiculos {
     public boolean remove(String placa) {
         Veiculo veiculo = get(placa);
         if (veiculo != null) {
-            veiculos.remove(veiculo);
-            numDeVeiculos--;
+            list.remove(veiculo);
             return true;
         }
         return false;

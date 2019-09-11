@@ -17,7 +17,6 @@ import br.com.locadora.veiculos.Veiculos;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
-
 /**
  * @author 1801560700
  */

@@ -10,10 +10,11 @@ package br.com.locadora.veiculos;
  * @author 1801560700
  */
 public abstract class Veiculo {
+
     private String placa;
     private int ano;
     private double valorDiaria;
-    
+
     public Veiculo(String placa, int ano, double valorDiaria) {
         this.placa = placa;
         this.ano = ano;
