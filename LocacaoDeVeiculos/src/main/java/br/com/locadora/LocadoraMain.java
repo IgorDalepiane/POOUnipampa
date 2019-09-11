@@ -5,13 +5,11 @@
  */
 package br.com.locadora;
 
-import br.com.locadora.clientes.ClienteGUI;
-
 /**
  * @author 1801560700
  */
 public class LocadoraMain {
     public static void main(String[] args) {
-        new ClienteGUI();
+
     }
 }
