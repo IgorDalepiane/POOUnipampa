@@ -8,6 +8,7 @@ package br.com.locadora.veiculos;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,26 +16,19 @@ import java.util.logging.Logger;
  *
  * @author 1801560700
  */
-public class Veiculos implements IVeiculos{
-    private static int numDeVeiculos=0;
-    static ArrayList<Veiculo> veiculos = new ArrayList<>();
-    
-    public Veiculos(){
-        
-    }
+public class Veiculos implements IVeiculos {
+
+    List<Veiculo> list = new ArrayList<>();
+
     @Override
     public void add(Veiculo v) {
-        veiculos.add(v);
-        numDeVeiculos++;
+        list.add(v);
     }
-    public int getNumVeiculos(){
-        return numDeVeiculos;
-    }
-    
+
     @Override
     public Veiculo get(String placa) {
-        for(Veiculo v: veiculos){
-            if(v.getPlaca().equals(placa)){
+        for (Veiculo v : list) {
+            if (v.getPlaca().equals(placa)) {
                 return v;
             }
         }
@@ -44,7 +38,7 @@ public class Veiculos implements IVeiculos{
     @Override
     public String getInfo(String placa) {
         Veiculo v = get(placa);
-        if(v!=null){
+        if (v != null) {
             return v.toString();
         }
         return null;
@@ -52,26 +46,26 @@ public class Veiculos implements IVeiculos{
 
     @Override
     public String getInfo() {
-        String str="";
-        int cont =1;
-        if(veiculos.get(0) != null){
-           for(Veiculo v:veiculos){
-              str = str.concat(cont+") "+getInfo(v.getPlaca())+"\n");
-              cont++;
-           }
-           return str;
+        String str = "";
+        int cont = 1;
+        if (!list.isEmpty()) {
+            for (Veiculo v : list) {
+                str = str.concat(cont + ") " + getInfo(v.getPlaca()) + "\n");
+                cont++;
+            }
+            return str;
         }
         return null;
     }
 
     @Override
     public String getResumoInfo() {
-         String str=null;
-        if(veiculos.get(0) != null){
-           for(Veiculo v:veiculos){
-            str = str.concat("Placa: "+v.getPlaca()+" | Ano: "+v.getAno()+" | Valor da Diaria: "+v.getValorDiaria()+"\n");
-           }
-           return str;
+        String str = null;
+        if (!list.isEmpty()) {
+            for (Veiculo v : list) {
+                str = str.concat("Placa: " + v.getPlaca() + " | Ano: " + v.getAno() + " | Valor da Diaria: " + v.getValorDiaria() + "\n");
+            }
+            return str;
         }
         return null;
     }
@@ -79,29 +73,28 @@ public class Veiculos implements IVeiculos{
     @Override
     public boolean set(String placa, Veiculo novo) {
         Veiculo velho = get(placa);
-        if(velho!=null){
-           int objIndex = veiculos.indexOf(velho);
-           veiculos.set(objIndex, novo);
-           return true;
+        if (velho != null) {
+            int objIndex = list.indexOf(velho);
+            list.set(objIndex, novo);
+            return true;
         }
-        return false; 
+        return false;
     }
 
     @Override
     public boolean remove(String placa) {
         Veiculo veiculo = get(placa);
-        if(veiculo!=null){
-           veiculos.remove(veiculo);
-           numDeVeiculos--;
-           return true;
+        if (veiculo != null) {
+            list.remove(veiculo);
+            return true;
         }
-        return false; 
+        return false;
     }
 
     @Override
     public boolean existe(String placa) {
         Veiculo veiculo = get(placa);
-        return veiculo!=null; 
+        return veiculo != null;
     }
-    
+
 }
