@@ -5,50 +5,63 @@
  */
 package br.com.locadora.clientes;
 
-/**
- *
- * @author 1801560700
- */
-public class Cliente implements IClientes{
+public class Cliente {
+    String nome;
+    long CPF;
+    long CNH;
+    long telefone;
+    String endereco;
 
-    @Override
-    public void add(Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Cliente(String nome, long CPF, long CNH, long telefone, String endereco) {
+        this.nome = nome;
+        this.CPF = CPF;
+        this.CNH = CNH;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
-    @Override
-    public Cliente get(long CPF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getNome() {
+        return nome;
     }
 
-    @Override
-    public String getInfo(long CPF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Cliente setNome(String nome) {
+        this.nome = nome;
+        return this;
     }
 
-    @Override
-    public String getInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public long getCPF() {
+        return CPF;
     }
 
-    @Override
-    public String getResumoInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Cliente setCPF(long CPF) {
+        this.CPF = CPF;
+        return this;
     }
 
-    @Override
-    public boolean set(long CPF, Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public long getCNH() {
+        return CNH;
     }
 
-    @Override
-    public boolean remove(long CPF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Cliente setCNH(long CNH) {
+        this.CNH = CNH;
+        return this;
     }
 
-    @Override
-    public boolean existe(long CPF) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public long getTelefone() {
+        return telefone;
     }
-    
+
+    public Cliente setTelefone(long telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public Cliente setEndereco(String endereco) {
+        this.endereco = endereco;
+        return this;
+    }
 }
