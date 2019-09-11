@@ -13,11 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author 1801560700
  */
 public class Veiculos implements IVeiculos {
-
     List<Veiculo> list = new ArrayList<>();
 
     @Override

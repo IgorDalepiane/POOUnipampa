@@ -3,10 +3,10 @@ package br.com.locadora.clientes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clientes implements IClientes {
+public class Clientes implements IClientes{
     List<Cliente> list;
 
-    Clientes() {
+    public Clientes() {
         this.list = new ArrayList<>();
     }
 
@@ -17,22 +17,17 @@ public class Clientes implements IClientes {
 
     @Override
     public Cliente get(long CPF) {
-        for (Cliente c : list) {
-            if (c.CPF == CPF)
-                return c;
-        }
-        return null;
+        return list.stream()
+                .filter(c -> c.CPF == CPF)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public String getInfo(long CPF) {
         Cliente c = get(CPF);
         if (c != null)
-            return "Nome: " + c.nome +
-                    " | CPF: " + c.CPF +
-                    " | Endereço: " + c.endereco +
-                    " | Telefone: " + c.telefone +
-                    " | CNH: " + c.CNH;
+            return c.toString();
         return null;
     }
 
@@ -41,7 +36,7 @@ public class Clientes implements IClientes {
         String str = "";
         if (!list.isEmpty()) {
             for (Cliente c : list)
-                str = str.concat(getInfo(c.CPF)).concat("\n");
+                str = str.concat(c.toString()).concat("\n");
             return str;
         }
         return null;
@@ -49,11 +44,11 @@ public class Clientes implements IClientes {
 
     @Override
     public String getResumoInfo() {
-        StringBuilder all = new StringBuilder();
-        if (list.get(0) != null) {
+        String str = "";
+        if (!list.isEmpty()) {
             for (Cliente c : list)
-                all.append("Nome: ").append(c.nome).append(" | CPF: ").append(c.CPF).append("\n");
-            return all.toString();
+                str += str.concat(c.resumo()).concat("\n");
+            return str;
         } else return null;
     }
 

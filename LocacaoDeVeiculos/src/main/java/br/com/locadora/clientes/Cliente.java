@@ -12,7 +12,7 @@ public class Cliente {
     long telefone;
     String endereco;
 
-    Cliente(String nome, long CPF, long CNH, long telefone, String endereco) {
+    public Cliente(String nome, long CPF, long CNH, long telefone, String endereco) {
         this.nome = nome;
         this.CPF = CPF;
         this.CNH = CNH;
@@ -20,48 +20,16 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public String getNome() {
-        return nome;
+    public String toString() {
+        return "Nome: " + this.nome +
+                " | CPF: " + this.CPF +
+                " | CNH: " + this.CNH +
+                " | Telefone: " + this.telefone +
+                " | Endereço: " + this.endereco;
     }
 
-    public Cliente setNome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    public long getCPF() {
-        return CPF;
-    }
-
-    public Cliente setCPF(long CPF) {
-        this.CPF = CPF;
-        return this;
-    }
-
-    public long getCNH() {
-        return CNH;
-    }
-
-    public Cliente setCNH(long CNH) {
-        this.CNH = CNH;
-        return this;
-    }
-
-    public long getTelefone() {
-        return telefone;
-    }
-
-    public Cliente setTelefone(long telefone) {
-        this.telefone = telefone;
-        return this;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public Cliente setEndereco(String endereco) {
-        this.endereco = endereco;
-        return this;
+    public String resumo() {
+        return "Nome: " + this.nome +
+                " | CPF: " + this.CPF;
     }
 }

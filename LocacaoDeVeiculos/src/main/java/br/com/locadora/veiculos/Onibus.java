@@ -6,10 +6,9 @@
 package br.com.locadora.veiculos;
 
 /**
- *
  * @author 1801560700
  */
-public class Onibus extends Veiculo{
+public class Onibus extends Veiculo {
     private int numPassageiros;
     private String categoria;
     private boolean wiFi;
@@ -57,21 +56,12 @@ public class Onibus extends Veiculo{
 
     @Override
     public String toString() {
-        String ar,wi;
-        if(isArCondicionado()){
-            ar="possui";
-        }else{
-            ar="não possui"; 
-        }
-        if(isWiFi()){
-            wi="possui";
-        }else{
-            wi="não possui"; 
-        }
-        return "Onibus com " +super.toString()+", Numero de Passageiros = " + numPassageiros + ", Categoria = " + categoria + ", Wi-Fi = " + wi + ", Ar-Condicionado = " + ar;
+        return "Onibus com " + super.toString() +
+                ", Numero de Passageiros = " + numPassageiros +
+                ", Categoria = " + categoria +
+                ", Wi-Fi = " + (isWiFi() ? "Sim" : "Não") +
+                ", Ar-Condicionado = " + (isArCondicionado() ? "Sim" : "Não");
     }
-    
-   
-   
-    
+
+
 }

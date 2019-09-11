@@ -5,45 +5,44 @@
  */
 package br.com.locadora.locacoes;
 
+import br.com.locadora.clientes.Cliente;
+import br.com.locadora.veiculos.Veiculo;
+
+import java.util.Date;
+
 /**
- *
  * @author 1801560700
  */
-public class Locacao implements ILocacoes{
+public class Locacao {
+    private int cod = 1;
+    private Cliente c;
+    private Veiculo v;
+    private boolean seguro;
+    private double diaria;
+    private Date dataInicio;
+    private Date dataFim;
 
-    @Override
-    public void add(Locacao l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getCod() {
+        return cod;
     }
 
-    @Override
-    public Locacao get(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Locacao(Cliente c, Veiculo v, boolean seguro, Date dataInicio, Date dataFim) {
+        this.cod = cod++;
+        this.c = c;
+        this.v = v;
+        this.seguro = seguro;
+        this.diaria = v.getValorDiaria();
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
     }
 
-    @Override
-    public String getInfo(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String toString() {
+        return "Código: " + this.cod +
+                " | Cliente: " + this.c.toString() +
+                " | Veículo: " + this.v.toString() +
+                " | Seguro: " + (this.seguro ? "Sim" : "Não") +
+                " | Diária: " + this.diaria +
+                " | Data de início: " + this.dataInicio.toString() +
+                " | Data de término: " + this.dataFim.toString();
     }
-
-    @Override
-    public String getInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean set(int codigo, Locacao l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean remove(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean existe(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

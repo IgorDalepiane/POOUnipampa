@@ -5,11 +5,9 @@
  */
 package br.com.locadora.veiculos;
 
-import java.lang.reflect.Field;
 import java.util.Scanner;
 
 /**
- *
  * @author 1801560700
  */
 public class VeiculosGUI {
