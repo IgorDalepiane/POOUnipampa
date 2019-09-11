@@ -3,10 +3,10 @@ package br.com.locadora.clientes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clientes implements IClientes {
+public class Clientes implements IClientes{
     List<Cliente> list;
 
-    Clientes() {
+    public Clientes() {
         this.list = new ArrayList<>();
     }
 
@@ -17,11 +17,10 @@ public class Clientes implements IClientes {
 
     @Override
     public Cliente get(long CPF) {
-        for (Cliente c : list) {
-            if (c.CPF == CPF)
-                return c;
-        }
-        return null;
+        return list.stream()
+                .filter(clienteNaLista -> clienteNaLista.CPF == CPF)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
@@ -30,9 +29,9 @@ public class Clientes implements IClientes {
         if (c != null)
             return "Nome: " + c.nome +
                     " | CPF: " + c.CPF +
-                    " | Endereço: " + c.endereco +
                     " | Telefone: " + c.telefone +
-                    " | CNH: " + c.CNH;
+                    " | CNH: " + c.CNH +
+                    " | Endereço: " + c.endereco;
         return null;
     }
 

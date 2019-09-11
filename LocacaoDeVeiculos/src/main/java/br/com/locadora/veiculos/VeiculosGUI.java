@@ -5,7 +5,6 @@
  */
 package br.com.locadora.veiculos;
 
-import java.lang.reflect.Field;
 import java.util.Scanner;
 
 /**
@@ -214,7 +213,7 @@ public class VeiculosGUI {
             System.out.print("Qual o indice escolhido: ");
             indice=ler.nextInt();
         }while(indice<1 || indice>veiculos.getNumVeiculos());
-        Veiculo v
+        //Veiculo v
         
     }
 }
