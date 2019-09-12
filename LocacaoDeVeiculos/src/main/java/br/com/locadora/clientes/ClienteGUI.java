@@ -49,7 +49,7 @@ public class ClienteGUI {
             Cliente old = clis.list.get(answer);
             Cliente novo = formMenu();
             if (novo != null)
-                clis.set(old.CPF, novo);
+                clis.set(old.getCPF(), novo);
         } else
             System.out.println("Nenhum cliente no sistema.");
     }

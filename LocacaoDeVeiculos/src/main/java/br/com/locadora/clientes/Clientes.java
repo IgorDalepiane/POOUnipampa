@@ -18,7 +18,7 @@ public class Clientes implements IClientes{
     @Override
     public Cliente get(long CPF) {
         return list.stream()
-                .filter(c -> c.CPF == CPF)
+                .filter(c -> c.getCPF() == CPF)
                 .findFirst()
                 .orElse(null);
     }
