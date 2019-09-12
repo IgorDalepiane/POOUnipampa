@@ -7,24 +7,28 @@ public class ClienteGUI {
     private Clientes clis;
     private Scanner in = new Scanner(System.in);
     private int answer;
+    private boolean sair = false;
 
     public ClienteGUI(Clientes cs) {
         this.clis = cs;
-        do generateMenu(); while (true);
+        while (!sair) {
+            generateMenu();
+        }
     }
 
     private void generateMenu() {
         do {
-            System.out.println("0. Sair");
-            System.out.println("1. Cadastrar");
-            System.out.println("2. Listar");
-            System.out.println("3. Editar");
+            System.out.println("0. Voltar");
+            System.out.println("1. Cadastrar cliente");
+            System.out.println("2. Listar cliente");
+            System.out.println("3. Editar cliente");
             answer = in.nextInt();
             in.nextLine();
         } while (answer < 0 || answer > 3);
         switch (answer) {
             case 0:
-                System.exit(0);
+                sair = true;
+                break;
             case 1:
                 cadastrarMenu();
                 break;

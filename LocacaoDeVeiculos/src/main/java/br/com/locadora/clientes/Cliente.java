@@ -10,7 +10,7 @@ public class Cliente {
     private long CPF;
     private long CNH;
     private long telefone;
-    private String endereco; //SDFUHSEUIHUASEIHFAKHWDUAHAKFAK
+    private String endereco;
 
     public Cliente(String nome, long CPF, long CNH, long telefone, String endereco) {
         this.nome = nome;

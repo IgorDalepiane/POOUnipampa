@@ -19,26 +19,27 @@ public class VeiculosGUI {
     private double valorDiaria;
     private Veiculos veiculos;
 
-    public VeiculosGUI() {
-        this.veiculos = new Veiculos();
-        do {
+    private boolean sair = false;
+
+    public VeiculosGUI(Veiculos vs) {
+        this.veiculos = vs;
+        while (!sair) {
             menu();
-        } while (true);
+        }
     }
 
     private void menu() {
         do {
-            System.out.println("\nMenu Veículos");
-            System.out.println("0 - Sair.");
-            System.out.println("1 - Cadastrar.");
-            System.out.println("2 - Listar.");
-            System.out.println("3 - Editar.");
-            System.out.print("O que voce deseja fazer: ");
+            System.out.println("0. Voltar");
+            System.out.println("1. Cadastrar veículo");
+            System.out.println("2. Listar veículos");
+            System.out.println("3. Editar veículo");
             op = ler.nextInt();
+            ler.nextLine();
         } while (op < 0 || op > 3);
         switch (op) {
             case 0:
-                System.exit(op);
+                sair = true;
                 break;
             case 1:
                 cadastrarMenu();

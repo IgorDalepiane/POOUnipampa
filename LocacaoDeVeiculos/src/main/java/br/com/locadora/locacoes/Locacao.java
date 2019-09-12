@@ -10,9 +10,6 @@ import br.com.locadora.veiculos.Veiculo;
 
 import java.util.Date;
 
-/**
- * @author 1801560700
- */
 public class Locacao {
     private int cod = 1;
     private Cliente c;

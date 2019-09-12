@@ -9,6 +9,7 @@ import br.com.locadora.clientes.Cliente;
 import br.com.locadora.clientes.ClienteGUI;
 import br.com.locadora.clientes.Clientes;
 import br.com.locadora.locacoes.Locacao;
+import br.com.locadora.locacoes.LocacaoGUI;
 import br.com.locadora.locacoes.Locacoes;
 import br.com.locadora.veiculos.Onibus;
 import br.com.locadora.veiculos.Veiculo;
@@ -17,6 +18,7 @@ import br.com.locadora.veiculos.Veiculos;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
+
 /**
  * @author 1801560700
  */
@@ -36,6 +38,6 @@ public class LocadoraMain {
         lcs.add(loc1);
         System.out.println(lcs.getInfo(loc1.getCod()));
 
-        new ClienteGUI(cs);
+        new LocacaoGUI(lcs, cs, vs);
     }
 }
