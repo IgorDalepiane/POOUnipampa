@@ -18,7 +18,7 @@ public class Locacao {
     private boolean seguro;
     private double diaria;
     private Date dataInicio, dataFim;
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
 
     public Locacao(Cliente c,
                    Veiculo v,

@@ -156,7 +156,7 @@ public class LocacaoGUI {
             }
         } while (true);
         in.nextLine();
-        System.out.print("Data de início: [dd/mm/yy][hoje]"); //data início
+        System.out.print("Data de início: [d/m/yy][hoje]"); //data início
         do {
             String resposta = in.nextLine();
             if (resposta.equals("hoje")) {
@@ -164,16 +164,16 @@ public class LocacaoGUI {
                 break;
             } else
                 try {
-                    dataIn = new SimpleDateFormat("dd/mm/yy").parse(resposta);
+                    dataIn = new SimpleDateFormat("d/M/yy").parse(resposta);
                     break;
                 } catch (ParseException e) {
                     System.out.println("Erro: a data inserida não está no formato exigido.");
                 }
         } while (true);
-        System.out.print("Data de término: [dd/mm/yy]"); //data fim
+        System.out.print("Data de término: [d/m/yy]"); //data fim
         do {
             try {
-                dataTe = new SimpleDateFormat("dd/mm/yy").parse(in.nextLine());
+                dataTe = new SimpleDateFormat("d/M/yy").parse(in.nextLine());
                 break;
             } catch (ParseException e) {
                 System.out.println("Erro: a data inserida não está no formato exigido.");
