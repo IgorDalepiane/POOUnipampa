@@ -20,6 +20,7 @@ public class Cliente {
         this.endereco = endereco;
     }
 
+    @Override
     public String toString() {
         return "Nome: " + this.nome +
                 " | CPF: " + this.CPF +

@@ -1,67 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.locadora.veiculos;
 
-/**
- * @author 1801560700
- */
 public class Onibus extends Veiculo {
     private int numPassageiros;
     private String categoria;
-    private boolean wiFi;
-    private boolean arCondicionado;
+    private boolean wiFi, ac;
 
-    public Onibus(int numPassageiros, String categoria, boolean wiFi, boolean arCondicionado, String placa, int ano, double valorDiaria) {
+    public Onibus(int numPassageiros,
+                  String categoria,
+                  boolean wiFi,
+                  boolean ac,
+                  String placa, int ano, double valorDiaria) {
         super(placa, ano, valorDiaria);
         this.numPassageiros = numPassageiros;
         this.categoria = categoria;
         this.wiFi = wiFi;
-        this.arCondicionado = arCondicionado;
+        this.ac = ac;
     }
 
-    public int getNumPassageiros() {
-        return numPassageiros;
-    }
-
-    public void setNumPassageiros(int numPassageiros) {
-        this.numPassageiros = numPassageiros;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public boolean isWiFi() {
+    private boolean hasWiFi() {
         return wiFi;
     }
 
-    public void setWiFi(boolean wiFi) {
-        this.wiFi = wiFi;
-    }
-
-    public boolean isArCondicionado() {
-        return arCondicionado;
-    }
-
-    public void setArCondicionado(boolean arCondicionado) {
-        this.arCondicionado = arCondicionado;
+    private boolean hasAC() {
+        return ac;
     }
 
     @Override
     public String toString() {
-        return "Onibus com " + super.toString() +
-                ", Numero de Passageiros = " + numPassageiros +
-                ", Categoria = " + categoria +
-                ", Wi-Fi = " + (isWiFi() ? "Sim" : "Não") +
-                ", Ar-Condicionado = " + (isArCondicionado() ? "Sim" : "Não");
+        return super.toString() +
+                " | Numero de passageiros: " + numPassageiros +
+                " | Categoria: " + categoria +
+                " | Wi-Fi: " + (hasWiFi() ? "Sim" : "Não") +
+                " | Ar-Condicionado: " + (hasAC() ? "Sim" : "Não");
     }
-
-
 }

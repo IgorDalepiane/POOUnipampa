@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Locacoes implements ILocacoes {
-    List<Locacao> list;
+    private List<Locacao> list;
 
     public Locacoes() {
         list = new ArrayList<>();
+    }
+
+    List<Locacao> getList() {
+        return list;
     }
 
     @Override
@@ -19,7 +23,7 @@ public class Locacoes implements ILocacoes {
     public Locacao get(int codigo) {
         return list.stream()
                 .filter(loc -> loc.getCod() == codigo)
-                .findAny()
+                .findFirst()
                 .orElse(null);
     }
 
@@ -36,10 +40,12 @@ public class Locacoes implements ILocacoes {
         String str = "";
         if (!list.isEmpty()) {
             for (Locacao loc : list)
-                str = str.concat(getInfo(loc.getCod())).concat("\n");
+                str = str.concat(String.valueOf(list.indexOf(loc)))
+                        .concat(". ")
+                        .concat(loc.toString())
+                        .concat("\n");
             return str;
-        }
-        return null;
+        } else return null;
     }
 
     @Override
