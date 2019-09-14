@@ -19,13 +19,10 @@ import java.text.ParseException;
  * @author 1801560700
  */
 public class LocadoraMain {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args){
         Clientes cs = new Clientes();
         Veiculos vs = new Veiculos();
         Locacoes lcs = new Locacoes();
-
-        Cliente c1 = new Cliente("Pedro", 11111111, 111111111, 1111, "abc");
-        Veiculo v1 = new Onibus(4, "tri", true, true, "1", 1, 5.00);
 
         new LocacaoGUI(lcs, cs, vs);
     }

@@ -15,7 +15,7 @@ public abstract class Veiculo {
         this.ano = ano;
         this.valorDiaria = valorDiaria;
     }
-
+    
     @Override
     public String toString() {
         return "Tipo: " + this.getClass().getSimpleName() +

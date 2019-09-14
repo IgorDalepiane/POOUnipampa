@@ -15,7 +15,7 @@ public class LocadoraMain extends Application {
     public void start(Stage window) {
         window.setTitle("Locar veículos");
         StackPane layout = new StackPane();
-        Scene scene = new Scene(layout, 300, 250);
+        Scene scene = new Scene(layout, 660, 341);
         window.setScene(scene);
         window.show();
     }

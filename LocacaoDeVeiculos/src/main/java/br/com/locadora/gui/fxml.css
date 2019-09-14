@@ -1,0 +1,13 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-border-width: 1 2 3 4; 
+    -fx-border-color: red blue green yellow;
+}
+
+.teste{
+    -fx-border-width: 4 4 4 4; 
+    -fx-border-color: red red red cadetblue;
+}
