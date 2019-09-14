@@ -6,11 +6,11 @@
 package br.com.locadora.clientes;
 
 public class Cliente {
-    String nome;
-    long CPF;
-    long CNH;
-    long telefone;
-    String endereco;
+    private String nome;
+    private long CPF;
+    private long CNH;
+    private long telefone;
+    private String endereco;
 
     public Cliente(String nome, long CPF, long CNH, long telefone, String endereco) {
         this.nome = nome;
@@ -20,6 +20,7 @@ public class Cliente {
         this.endereco = endereco;
     }
 
+    @Override
     public String toString() {
         return "Nome: " + this.nome +
                 " | CPF: " + this.CPF +
@@ -28,8 +29,12 @@ public class Cliente {
                 " | Endereço: " + this.endereco;
     }
 
-    public String resumo() {
+    String resumo() {
         return "Nome: " + this.nome +
                 " | CPF: " + this.CPF;
+    }
+
+    long getCPF() {
+        return this.CPF;
     }
 }

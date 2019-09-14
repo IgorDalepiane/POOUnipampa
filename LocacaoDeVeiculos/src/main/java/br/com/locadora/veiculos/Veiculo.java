@@ -5,12 +5,7 @@
  */
 package br.com.locadora.veiculos;
 
-/**
- *
- * @author 1801560700
- */
 public abstract class Veiculo {
-
     private String placa;
     private int ano;
     private double valorDiaria;
@@ -21,33 +16,27 @@ public abstract class Veiculo {
         this.valorDiaria = valorDiaria;
     }
 
-    public String getPlaca() {
+    @Override
+    public String toString() {
+        return "Tipo: " + this.getClass().getSimpleName() +
+                " | Placa: " + placa +
+                " | Ano: " + ano +
+                " | Valor da diária: " + valorDiaria +
+                "\n";
+    }
+
+    String resumo() {
+        return "Placa: " + placa +
+                " | Valor da diária: " + valorDiaria;
+    }
+
+    String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
 
     public double getValorDiaria() {
         return valorDiaria;
-    }
-
-    public void setValorDiaria(double valorDiaria) {
-        this.valorDiaria = valorDiaria;
-    }
-
-    @Override
-    public String toString() {
-        return "placa = " + placa + "\n\tAno = " + ano + ", Valor Diaria = " + valorDiaria;
     }
 
 }

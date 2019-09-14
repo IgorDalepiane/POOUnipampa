@@ -3,11 +3,15 @@ package br.com.locadora.clientes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clientes implements IClientes{
-    List<Cliente> list;
+public class Clientes implements IClientes {
+    private List<Cliente> list;
 
     public Clientes() {
         this.list = new ArrayList<>();
+    }
+
+    public List<Cliente> getList() {
+        return list;
     }
 
     @Override
@@ -18,7 +22,7 @@ public class Clientes implements IClientes{
     @Override
     public Cliente get(long CPF) {
         return list.stream()
-                .filter(c -> c.CPF == CPF)
+                .filter(c -> c.getCPF() == CPF)
                 .findFirst()
                 .orElse(null);
     }
@@ -36,10 +40,12 @@ public class Clientes implements IClientes{
         String str = "";
         if (!list.isEmpty()) {
             for (Cliente c : list)
-                str = str.concat(c.toString()).concat("\n");
+                str = str.concat(String.valueOf(list.indexOf(c)))
+                        .concat(". ")
+                        .concat(c.toString())
+                        .concat("\n");
             return str;
-        }
-        return null;
+        } else return null;
     }
 
     @Override
@@ -47,7 +53,8 @@ public class Clientes implements IClientes{
         String str = "";
         if (!list.isEmpty()) {
             for (Cliente c : list)
-                str += str.concat(c.resumo()).concat("\n");
+                str = str.concat(c.resumo())
+                        .concat("\n");
             return str;
         } else return null;
     }
